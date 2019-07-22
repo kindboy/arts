@@ -33,4 +33,4 @@ var threeSumClosest = function(nums, target) {
     return result;
 };
 
-console.log(threeSumClosest([0, 2, 1, -3], 1));
+module.exports = threeSumClosest;
