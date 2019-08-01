@@ -85,3 +85,23 @@ JWT是一种让无状态身份验证成为可能的加密信息的安全加密�
 基本上，客户端应用在用户名和密码验证通过的同事获取到一个JWT token。
 
 感谢JAVASCRIPT，接下来他发送所有请求到服务器都会在HTTP请求头中携带JWT token。服务端验证签名和载荷是否对应，如果匹配成功，服务端就处理我们的载荷内容。
+
+### 基本用例
+
+* 保护浏览器端和对应服务端之间的的通信
+* 保护手机应用，桌面应用和对应后端的通信
+* 保护不同团队或一个团队的后端服务之间的通信
+
+### 何处存储JWT?
+
+我们需要手动在客户端（内存，local/session，cookie, local storage, etc...）存储JWT
+
+不建议将JWT存储在浏览器的localstorage中：
+
+* 在用户关闭浏览器后它依然会被保留知道jwt过期
+
+* 你页面内的所有JavaScript代码都可以访问local storage：没有任何数据保护措施
+
+* 不能被[web workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers?source=post_page---------------------------)使用
+
+在session cookie中存储jwt可能是解决这个问题，我们之后再说这个。
